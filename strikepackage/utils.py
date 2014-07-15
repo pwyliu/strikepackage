@@ -172,7 +172,7 @@ def get_params(session, config):
     # get pool data
     poolref = session.xenapi.pool.get_all_records()
     if len(poolref) > 1:
-        abort("Multiple pools returned by XenAPI. Strike-Package does not "
+        abort("Multiple pools returned by XenAPI. Strikepackage does not "
               "support this scenario.")
     poolrec = poolref.popitem()[1]
     pm_rec = session.xenapi.host.get_record(poolrec['master'])
