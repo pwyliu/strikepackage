@@ -1,5 +1,5 @@
-Strike-Package
---------------
+strikepackage
+-------------
 
 Install::
 

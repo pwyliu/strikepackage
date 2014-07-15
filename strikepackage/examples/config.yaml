@@ -4,7 +4,7 @@
 # Strike Package only lists templates that have been tagged on XenServer with
 # this string. See README for more details.
 #
-sp_tag: strike-package
+sp_tag: strikepackage
 
 
 # DNS Settings
