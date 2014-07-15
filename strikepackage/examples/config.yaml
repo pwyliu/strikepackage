@@ -1,16 +1,16 @@
 ---
 # Strikepackage Tag
 # -----------------
-# sp_tag - Strike Package only lists templates that have been tagged on
-#          XenServer with this string. See README for more.
+# Strike Package only lists templates that have been tagged on XenServer with
+# this string. See README for more details.
 #
 sp_tag: strike-package
 
 
 # DNS Settings
 # ------------
-# These will be made available to templates are are used to derive some
-# defaults. Use them in your Cloud-init userdata.
+# These settings will be made available to templates, and are used to derive
+# some defaults. Use them in your cloud-init templates.
 #
 dns_searchdomain: ho.mycompany.local
 dns_serverstring: 192.168.1.100 192.168.1.101 192.168.1.103
