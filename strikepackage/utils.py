@@ -2,6 +2,7 @@ import sys
 import os
 import re
 import uuid
+
 import hipchat
 
 
@@ -215,12 +216,6 @@ def get_params(session, config):
     params['rand_pass'] = "{}{}".format(uuid.uuid4().hex, uuid.uuid4().hex)
     params['mchm_vm_url'] = "N/A"  # defaults to N/A
 
-    # read in boot args if they have been provided in config file,
-    # else default to empty string
-    if 'boot_args' in config:
-        params['boot_args'] = config['boot_args']
-    else:
-        params['boot_args'] = ''
     return params
 
 

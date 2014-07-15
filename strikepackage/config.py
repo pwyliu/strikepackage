@@ -1,7 +1,9 @@
 import os
+
 import kaptan
 from yaml.parser import ParserError
-from schema import Schema, Use, And, Optional, SchemaError
+from schema import Schema, Use, And, SchemaError
+
 from .utils import abort, warn
 from .examples import config_src, userdata_src, metadata_src
 
@@ -15,7 +17,6 @@ def validate_conf(configdata):
         'puppet_enable': bool,
         'mchm_enable': bool,
         'hipchat_enable': bool,
-        Optional('boot_args'): And(str, len),
         str: object  # don't care about extra data
     })
     try:

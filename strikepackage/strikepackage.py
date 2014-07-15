@@ -25,7 +25,9 @@ Options:
 __version__ = '0.5.0'
 
 import sys
+
 from docopt import docopt
+
 from .xenserver import get_session
 from .utils import get_params
 from .config import load_args, mkconfig

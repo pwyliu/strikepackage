@@ -7,15 +7,6 @@
 sp_tag: strike-package
 
 
-# Kernel Boot Args
-# ----------------
-# Appears as "Boot Options" in XenCenter. Enter as a quoted string.
-# If you use MCHM, "url=my_mchm_url" will automatically be appended. This
-# setting is optional.
-#
-# boot_args: "--quiet console=hvc0"
-
-
 # DNS Settings
 # ------------
 # These will be made available to templates are are used to derive some

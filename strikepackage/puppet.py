@@ -1,7 +1,7 @@
-import sys
-from .utils import warn
 from requests import Session, Request
 import requests.exceptions
+
+from .utils import warn
 
 
 def puppet_api_call(url, method, config, **kwargs):

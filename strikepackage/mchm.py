@@ -1,9 +1,11 @@
 import json
 import time
+
 from requests import Request, Session
 import requests.exceptions
 from jinja2 import Environment, FileSystemLoader
 from progress.spinner import Spinner
+
 from .utils import abort, warn
 
 

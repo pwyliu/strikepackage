@@ -1,9 +1,10 @@
 import time
 from pprint import pprint
-import XenAPI
 import getpass as gp
+
+import XenAPI
 from progress.spinner import Spinner
-from .packages import provision
+
 from .utils import abort
 
 
@@ -88,8 +89,13 @@ def create_vm(session, params, config):
     try:
         session.xenapi.VIF.create(vif)
         session.xenapi.VM.provision(vm_ref)
-        if params['boot_args'] != '':
-            session.xenapi.VM.set_PV_args(vm_ref, params['boot_args'])
+
+        # append MCHM url to template bootargs
+        if config['mchm_enable']:
+            boot_args = session.xenapi.VM.get_PV_args(vm_ref)
+            boot_args = '{} url={}'.format(boot_args, params['mchm_vm_url'])
+            session.xenapi.VM.set_PV_args(vm_ref, boot_args)
+
     except XenAPI.Failure as ex:
         abort("Error provisioning VM: XenAPI failure {}".format(ex.message))
 

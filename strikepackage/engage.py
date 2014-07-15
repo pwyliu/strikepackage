@@ -1,6 +1,8 @@
 import time
+import textwrap
+
 from progress.spinner import Spinner
-import datetime
+
 from .xenserver import create_vm
 from .utils import review_choices, hipchat_notification
 from .mchm import mchm_render, mchm_upload, mchm_poll
@@ -24,7 +26,7 @@ def engage(config, session, params):
         else:
             params['mchm_vm_url'] = mchm_resp['ipv4_url']
 
-        # Generate userdata. Template have access to everything in the
+        # Generate userdata. Templates have access to everything in the
         # config and params dicts
         userdata, metadata = mchm_render(
             config['mchm_templatedir'], dict(config.items() + params.items()))
@@ -32,10 +34,6 @@ def engage(config, session, params):
         # Upload
         mchm_upload(config['mchm_url'], userdata, metadata,
                     iid=params['mchm_id'])
-
-        # Bootarg with MCHM url
-        urlstr = "url={}".format(params['mchm_vm_url'])
-        params['boot_args'] = "{} {}".format(params['boot_args'], urlstr)
 
     # review choices, then use XenAPI to create VM
     review_choices(params, config)
@@ -79,8 +77,14 @@ def engage(config, session, params):
     print "\nRun complete.\n"
     print exit_details
     if config['mchm_enable']:
-        print ("Generated password: {}\n"
-               "Smokey The Bear says: remember to change passwords immediately "
-               "if you used this value in your template!\nOnly you can prevent "
-               "wildfires.").format(params['rand_pass'])
+        print textwrap.dedent("""\
+                Generated password: {}"
+
+                Smokey The Bear Sez: Remember to change passwords immediately
+                if you used the generated password in your templates. This
+                password is not necessarily secure, and should be used for
+                bootstrapping purposes only.
+
+                Only you can prevent wildfires.\n
+                """).format(params['rand_pass'])
     return
