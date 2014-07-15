@@ -58,7 +58,7 @@ setup(
     install_requires=requires,
     include_package_data=True,
     packages=find_packages(),
-    package_data={'': ['*.example']},
+    package_data={'examples': ['*.yaml', '*.jinja2']},
     entry_points={
         'console_scripts': ['strikepackage = strikepackage.strikepackage:main']
     },
