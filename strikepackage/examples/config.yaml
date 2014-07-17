@@ -9,8 +9,8 @@ sp_tag: strikepackage
 
 # DNS Settings
 # ------------
-# These settings will be made available to templates, and are used to derive
-# some defaults. Use them in your cloud-init templates.
+# These settings will be made available to cloud-init templates, and are used to
+# derive some defaults.
 #
 dns_searchdomain: ho.mycompany.local
 dns_serverstring: 192.168.1.100 192.168.1.101 192.168.1.103

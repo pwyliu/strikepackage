@@ -97,10 +97,7 @@ def get_network_details(config):
     nw = ''
     netmask = ''
     broadcast = ''
-
-    dns_searchdomain = config['dns_searchdomain']
-    dns_servers = config['dns_serverstring']
-    domain_suffix = '.' + dns_searchdomain
+    domain_suffix = '.' + config['dns_searchdomain']
 
     # get hostname and set fqdn
     while hostname == '':
@@ -121,8 +118,8 @@ def get_network_details(config):
             'netmask': netmask,
             'broadcast': broadcast,
             'gw': gw,
-            'dns_servers': dns_servers,
-            'dns_searchdomain': dns_searchdomain,
+            'dns_servers': config['dns_serverstring'],
+            'dns_searchdomain': config['dns_searchdomain'],
             'dhcp': dhcp
         }
 
@@ -160,8 +157,8 @@ def get_network_details(config):
         'netmask': netmask,
         'broadcast': broadcast,
         'gw': gw,
-        'dns_servers': dns_servers,
-        'dns_searchdomain': dns_searchdomain,
+        'dns_servers': config['dns_serverstring'],
+        'dns_searchdomain': config['dns_searchdomain'],
         'dhcp': dhcp
     }
 
