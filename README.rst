@@ -122,6 +122,7 @@ Setup.py creates the strikepackage command. When running from source, execute
 *run.py* instead.
 
 .. code-block:: bash
+
   git clone https://github.com/pwyliu/strikepackage.git
   cd strikepackage
   ./run.py mkconfig
