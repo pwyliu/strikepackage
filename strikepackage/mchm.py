@@ -59,7 +59,7 @@ def mchm_upload(mchm_url, userdata, metadata, iid=None):
     """
     Uploads templates to MCHM server
     """
-    url = "{}/api/submit/".format(mchm_url)
+    url = "{}/api/submit".format(mchm_url)
     headers = {'content-type': 'application/json'}
     if iid is not None:
         uploadtype = ('id', iid)

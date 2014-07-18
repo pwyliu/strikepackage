@@ -25,7 +25,7 @@ runcmd:
 
 # Phoning home. This is mandatory so Strikepackage knows when the VM has booted up.
 phone_home:
-  url: {{ params['mchm_url'] }}/api/phonehome/{{ params['mchm_id'] }}/
+  url: {{ params['mchm_url'] }}/api/phonehome/{{ params['mchm_id'] }}
   post: all
   tries: 5
 
