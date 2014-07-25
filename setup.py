@@ -11,7 +11,7 @@ with open(path.join(here, 'strikepackage/strikepackage.py')) as f:
 version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
                           version_file, re.M)
 if version_match:
-    sp_version = version_match.group(1)
+    version = version_match.group(1)
 else:
     raise RuntimeError("Unable to find version string.")
 
@@ -37,7 +37,7 @@ requires = [
 # Setup
 setup(
     name='strikepackage',
-    version=sp_version,
+    version=version,
     description='A command line tool to deploy virtual machines on XenServer.',
     long_description=readme + '\n\n' + history,
     author='Paul Liu',

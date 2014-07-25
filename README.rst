@@ -28,13 +28,13 @@ Installation And Configuration
 
 1. Install strikepackage with pip.
 
-.. code-block:: bash
+.. code:: bash
 
-  pip install git+https://github.com/pwyliu/strikepackage.git
+  pip install strikepackage
 
 2. Before you can use strikepackage, you need to create a *config.yaml* file and edit it for your environment. The example config contains more info.
 
-.. code-block:: bash
+.. code:: bash
 
   strikepackage mkconfig
   cd ~/.strikepackage
@@ -45,7 +45,7 @@ Installation And Configuration
 
 4. If you are using MCHM, create *userdata.jinja2* and *metadata.jinja2* in the template directory you configured in *config.yaml*.
 
-.. code-block:: bash
+.. code:: bash
 
   cd ~/.strikepackage
   cp examples/*.jinja2 templates/
@@ -57,7 +57,7 @@ Installation And Configuration
 
 6. Now you are ready to run Strikepackage. The main invocation looks like this
 
-.. code-block:: bash
+.. code:: bash
 
   strikepackage deploy https://myxenserver.ho.domain.local
 
@@ -70,7 +70,7 @@ You can put whatever cloud-config you want in these templates. The only hard req
 
 A giant dict gets passed to templates as *params*. You can use any of these variables:
 
-.. code-block:: python
+.. code:: python
 
   {
     'sp_tag': 'strikepackage',                                                        # from config.yaml
@@ -121,7 +121,7 @@ All pull requests welcome! I ain't fancy.
 Setup.py creates the strikepackage command. When running from source, execute
 *run.py* instead.
 
-.. code-block:: bash
+.. code:: bash
 
   git clone https://github.com/pwyliu/strikepackage.git
   cd strikepackage
