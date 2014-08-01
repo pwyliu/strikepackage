@@ -78,7 +78,7 @@ def engage(config, session, params):
     print exit_details
     if config['mchm_enable']:
         print textwrap.dedent("""\
-                Generated password: {}"
+                Generated password: {}
 
                 Smokey The Bear Sez: Remember to change passwords immediately
                 if you used the generated password in your templates. This
