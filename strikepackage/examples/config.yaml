@@ -44,6 +44,9 @@ mchm_templatedir: /home/my_user/.strikepackage/templates
 # mandatory. Check out the Puppet API documentation if you aren't sure how to
 # enable access.
 #
+# Strikepackage needs access to the /certificate_status endpoint. See the
+# README for details.
+#
 # puppet_enable - set to true/false to enable/disable Puppet integration.
 # puppet_url - URL of Puppet HTTP API.
 # puppet_environment - If don't use environments, just leave it as production.
