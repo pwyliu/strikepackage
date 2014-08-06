@@ -36,6 +36,11 @@ Installation And Configuration
 
 .. code:: bash
 
+  # When you run strikepackage, it looks for a config file in the current
+  # directory first, then in /home/$USER/.strikepackage/.
+  # If you specify an alternate path with --conf, this will be used instead.
+
+  # mkconfig creates /home/$USER/.strikepackage and places example files.
   strikepackage mkconfig
   cd ~/.strikepackage
   cp examples/config.yaml config.yaml
@@ -61,10 +66,40 @@ Installation And Configuration
 
   strikepackage deploy https://myxenserver.ho.domain.local
 
+
+Configuring Puppet API Access
+-----------------------------
+
+In order to configure access to the Puppet API you will need to do two things:
+
+1. Generate a certificate and key on the Puppet master for use with Strikepackage
+
+2. Configure *auth.conf* on the Puppet master to allow access to the /certificate_status endpoint
+
+Generate the certificate with *puppet cert generate*. You should be creating a unique certificate for every user.
+
+.. code:: bash
+
+  puppet cert generate strikepackage-myusername
+
+  # Certificate and key are located in $ssldir/certs and $ssldir/private_keys respectively. Copy these files and the CA cert to your workstation.
+  cd $(puppet master --configprint ssldir)
+  find . | grep strikepackage
+  find . | grep ca_crt
+
+Allow access to /certificate_status by creating an ACL in auth.conf. Below is an example. See the `auth.conf documentation <https://docs.puppetlabs.com/guides/rest_auth_conf.html>`_ for more details.
+
+.. code::
+
+  # /etc/puppet/auth.conf
+ path /certificate_status
+ auth yes
+ allow strikepackage-myusername
+
 Creating MCHM Templates
 -----------------------
 
-MCHM works by using cloud-init's `NoCloudNet <http://cloudinit.readthedocs.org/en/latest/topics/datasources.html#no-cloud>`_ `data source <http://smoser.brickies.net/ubuntu/nocloud/>`_. Strikepackage looks in the template dir for two files to render and upload to MCHM: *userdata.jinja2* and *metadata.jinja2*.
+Template are written in the `jinja2 templating language <http://jinja.pocoo.org/docs/>`_. MCHM works by using cloud-init's `NoCloudNet <http://cloudinit.readthedocs.org/en/latest/topics/datasources.html#no-cloud>`_ `data source <http://smoser.brickies.net/ubuntu/nocloud/>`_. Strikepackage looks in the template dir for two files to render and upload to MCHM: *userdata.jinja2* and *metadata.jinja2*.
 
 You can put whatever cloud-config you want in these templates. The only hard requirement is that cloud-init must `phone home <http://cloudinit.readthedocs.org/en/latest/topics/examples.html#call-a-url-when-finished>`_ to MCHMs phonehome API endpoint when it's done. This is how Strikepackage knows the VM came online and finished booting. See the example userdata template in ~/.strikepackage/examples for more details.
 
