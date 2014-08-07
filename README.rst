@@ -70,24 +70,27 @@ Installation And Configuration
 Configuring Puppet API Access
 -----------------------------
 
-In order to configure access to the Puppet API you will need to do two things:
+In order to configure access to the `Puppet API <https://docs.puppetlabs.com/guides/rest_api.html>`_ you will need to do two things:
 
 1. Generate a certificate and key on the Puppet master for use with Strikepackage
 
-2. Configure *auth.conf* on the Puppet master to allow access to the /certificate_status endpoint
+2. Configure *auth.conf* on the Puppet master to allow access to the */certificate_status* endpoint
 
-Generate the certificate with *puppet cert generate*. You should be creating a unique certificate for every user.
+Generate the certificate with `puppet cert generate <https://docs.puppetlabs.com/references/3.stable/man/cert.html>`_. You should be creating a unique certificate for every user.
 
 .. code:: bash
 
+  # Generate a certificate for myusername
   puppet cert generate strikepackage-myusername
 
-  # Certificate and key are located in $ssldir/certs and $ssldir/private_keys respectively. Copy these files and the CA cert to your workstation.
+  # The certificate and key will be located in $ssldir/certs and
+  # $ssldir/private_keys respectively. Copy these files and the CA cert to
+  # /home/$USER/.strikepackage/keys on your workstation.
   cd $(puppet master --configprint ssldir)
   find . | grep strikepackage
   find . | grep ca_crt
 
-Allow access to /certificate_status by creating an ACL in auth.conf. Below is an example. See the `auth.conf documentation <https://docs.puppetlabs.com/guides/rest_auth_conf.html>`_ for more details.
+Allow access to */certificate_status* by creating an ACL in *auth.conf*. Below is an example. See the `auth.conf documentation <https://docs.puppetlabs.com/guides/rest_auth_conf.html>`_ for more details.
 
 .. code::
 
