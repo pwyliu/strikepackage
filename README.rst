@@ -92,12 +92,12 @@ Generate the certificate with `puppet cert generate <https://docs.puppetlabs.com
 
 Allow access to */certificate_status* by creating an ACL in *auth.conf*. Below is an example. See the `auth.conf documentation <https://docs.puppetlabs.com/guides/rest_auth_conf.html>`_ for more details.
 
-.. code::
+.. code:: bash
 
   # /etc/puppet/auth.conf
- path /certificate_status
- auth yes
- allow strikepackage-myusername
+  path /certificate_status
+  auth yes
+  allow strikepackage-myusername
 
 Creating MCHM Templates
 -----------------------
