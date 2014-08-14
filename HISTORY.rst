@@ -1,6 +1,10 @@
 Release History
 ===============
 
+0.5.3
+-----
+- Fix dash in hostname bug
+
 0.5.2
 -----
 - Minor bug fixes

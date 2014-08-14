@@ -45,8 +45,10 @@ def validate_ip(ip):
 def validate_hostname(hostname):
     if len(hostname) > 255:
         return False
-    allowed = re.compile("(?!-)[A-Z\d-]{1,63}(?<!-)$", re.IGNORECASE)
-    return all(allowed.match(x) for x in hostname)
+    allowed = re.compile("^(?!-)[A-Z\d-]{1,63}(?<!-)$", re.IGNORECASE)
+    if allowed.match(hostname):
+        return True
+    return False
 
 
 def review_choices(params, config):
